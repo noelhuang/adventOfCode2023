@@ -1,19 +1,22 @@
 from helpers.parsers import parse_txt_as_string
 import re
 # Parse txt file
-input_string = parse_txt_as_string('01/input.txt')
+input_string = parse_txt_as_string('input.txt')
 
 word_num_map = {
-    'one' : '1',
-    'two': '2',
-    'three': '3',
-    'four': '4',
-    'five': '5',
-    'six': '6',
-    'seven': '7',
-    'eight': '8',
-    'nine': '9',
+    'one': 'o1ne',
+    'two': 't2wo',
+    'three': 't3hree',
+    'four': 'f4our',
+    'five': 'f5ive',
+    'six': 's6ix',
+    'seven': 's7even',
+    'eight': 'e8ight',
+    'nine': 'n9ine',
 }
+
+for key, value in word_num_map.items():
+    input_string = input_string.replace(key, value)
 
 raw_arr = input_string.split()
 num_arr = []
@@ -21,13 +24,18 @@ num_arr = []
 
 # Part one
 for item in raw_arr:
-    matches = []
-    for match in re.finditer(r'one|two|three|four|five|six|seven|eight|nine', item, re.IGNORECASE):
-        matches.append(match)
-    first_word = matches[0].start()
-    last_word = matches[-1].start()
-    print(first_word)
-    print(last_word)
+    # matches = []
+    # for match in re.finditer(r'one|two|three|four|five|six|seven|eight|nine', item, re.IGNORECASE):
+    #     matches.append(match)
+    # if len(matches) > 1:
+    #     last_word_start = matches[-1].start()
+    #     last_word_end = matches[-1].end()
+    #     item = item[0:last_word_start] + word_num_map[matches[-1][0]] + item[last_word_end:]
+    # if len(matches) > 0:
+    #     first_word_start = matches[0].start()
+    #     first_word_end = matches[0].end()
+    #     item = item[0:first_word_start] + word_num_map[matches[0][0]] + item[first_word_end:]
+    print(item)
     # initialize variables
     first_digit = 0
     second_digit = 0
