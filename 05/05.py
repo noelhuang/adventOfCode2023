@@ -59,4 +59,19 @@ def map_step(number, my_map):
             return output
     return number
 
-print(map_step(2053199047, seed_soil_map))
+locations = []
+
+def all_maps(seed, arr):
+    res = map_step(seed, seed_soil_map)
+    res = map_step(res, soil_fert_map)
+    res = map_step(res, fert_water_map)
+    res = map_step(res, water_light_map)
+    res = map_step(res, light_temp_map)
+    res = map_step(res, temp_humi_map)
+    res = map_step(res, humi_location_map)
+    arr.append(res)
+
+for seed in seeds:
+    all_maps(seed, locations)
+
+print(min(locations))
